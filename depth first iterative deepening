@@ -1,0 +1,46 @@
+from collections import defaultdict
+graph = defaultdict(list)
+c=1
+while(c):
+ print('Enter edge')
+ i,j=[int(x) for x in input().split()]
+ graph[i].append(j)
+ print('Enter c')
+ c=int(input())
+src = 0
+print('Enter max depth')
+m = int(input())
+print('Enter target')
+target = int(input())
+if(iter_deep()):
+ print('Target found within the limit')
+else:
+ print('Target is not found within the limit')
+def iter_deep():
+ for i in range(m):
+ if(dfs(src, target, i)):
+ return True
+ return False
+def dfs(src, target, i):
+ if src == target:
+ return True
+ if i<=0:
+ return False
+ for j in graph[src]:
+ if dfs(j, target, i-1):
+ return True
+ return False
+output:
+Enter edge
+0 1
+Enter c
+1
+Enter edge
+0 2
+Enter c
+1
+Enter max depth
+3
+Enter target
+7
+Target is not found within the limit
